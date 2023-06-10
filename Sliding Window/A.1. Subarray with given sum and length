@@ -1,0 +1,39 @@
+/*
+Given an array A of length N. Also given are integers B and C.
+
+Return 1 if there exists a subarray with length B having sum C and 0 otherwise
+
+*/
+
+public class Solution {
+    public int solve(int[] A, int B, int C) {
+
+        int N = A.length;
+
+        int sum =0;
+
+        for(int i=0 ; i<B ; i++){
+            sum = sum+ A[i];    
+        } 
+
+        if(sum ==C){
+            return 1;
+        }  
+
+        int S1=1;
+        int S2 = B;
+
+        while(S2<N){
+            sum = sum - A[S1-1] + A[S2];
+            S1++;
+            S2++;
+
+            if(sum == C){
+                return 1;
+            }
+        }
+
+        return 0;
+    
+    }
+}
